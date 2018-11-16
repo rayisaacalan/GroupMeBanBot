@@ -19,10 +19,9 @@ BOT_ID = os.getenv('GROUPME_TESTBOT_ID')
 @app.route('/', methods=['POST'])
 def webhook():
     data = request.get_json()
-
+    print(data, flush = True)
     if data['id'] == BANNABLE_USER:
         if not random.randint(0,1):
-            print(data, flush = True)
             remove_user(data['id'])
     return "ok", 200
 
