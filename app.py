@@ -2,7 +2,6 @@ import os
 import sys
 import json
 import groupy
-from groupy import Bot, Group, attachments
 from groupy.client import Client, attachments
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
