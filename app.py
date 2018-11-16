@@ -18,7 +18,7 @@ def post():
     data = request.get_json()
     log('Recieved {}'.format(data))
     groupID = data['group_id']
-    bot = get_bot(groupID)
+    bot = get_bot(groupID, name)
     group = get_group(groupID)
     # We don't want to reply to ourselves!
     if data['name'] != bot.name:
@@ -57,13 +57,14 @@ def at_all(bot, group):
 
     bot.post(text, mention)
 
-def get_bot(groupID):
-    for b in Bot.list():
+def get_bot(groupID, name):
+    for b in Client.bots.list():
         if b.group_id == groupID:
-            return b
+            if b.username == name:
+                return b
 
 def get_group(groupID):
-    for g in Group.list():
+    for g in Client.groups.list():
         if g.group_id == groupID:
             return g
 
