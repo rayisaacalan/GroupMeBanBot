@@ -20,8 +20,10 @@ BOT_ID = os.getenv('GROUPME_TESTBOT_ID')
 def webhook():
     data = request.get_json()
     print(data, flush = True)
-    if data['id'] == BANNABLE_USER:
+    if data['user_id'] == BANNABLE_USER:
+        print('Bannable User posted message!')
         if not random.randint(0,1):
+            print('Bannable user got unlucky!')
             remove_user(data['id'])
     return "ok", 200
 
