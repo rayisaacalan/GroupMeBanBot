@@ -44,7 +44,9 @@ def send_message(msg):
 def remove_user(memID):
     print('Made it to remove_user() with memID = '+ memID)
     send_message('That was not very cash money of you.')
-    GMManager = groupy.api.base.Manager.__init__(GMClient, '/groups/'+GROUP_ID+'/members/'+memID+'/remove')
+    GMManager = groupy.api.base.Manager
+    GMManager.base_url = 'https://api.groupme.com/v3/'
+    GMManager.__init__(GMClient, '/groups/'+GROUP_ID+'/members/'+memID+'/remove')
     MemManager = groupy.api.memberships.Memberships(GMManager)
     MemManager.__init__(GMClient, GROUP_ID)
     MemManager.remove(memID)
