@@ -4,7 +4,7 @@ import json
 import groupy
 import random
 from groupy.client import Client, attachments
-from groupy.api.memberships import remove
+from groupy.api import memberships
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from flask import Flask, request
@@ -44,4 +44,4 @@ def send_message(msg):
 def remove_user(memID):
     print('Made it to remove_user() with memID = '+ memID)
     send_message('That was not very cash money of you.')
-    remove(memID)
+    memberships.remove(memID)
