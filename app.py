@@ -43,5 +43,8 @@ def send_message(msg):
 def remove_user(memID):
     print('Made it to remove_user() with memID = '+ memID)
     send_message('That was not very cash money of you.')
-    kickResponse = requests.post('https://api.groupme.com/v3/groups/'+ GROUP_ID +'/members'+ memID +'/remove?token='+TOKEN, data = memID)
+    data = {
+        'membership_id' : memID
+    }
+    kickResponse = requests.post('https://api.groupme.com/v3/groups/'+ GROUP_ID +'/members'+ memID +'/remove?token='+TOKEN, data)
     print(kickResponse)
