@@ -44,4 +44,5 @@ def send_message(msg):
 def remove_user(memID):
     print('Made it to remove_user() with memID = '+ memID)
     send_message('That was not very cash money of you.')
-    memberships.remove(memID)
+
+    groupy.api.memberships.remove(memID)
