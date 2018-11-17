@@ -37,13 +37,11 @@ def send_message(msg):
     }
     request = Request(url, urlencode(data).encode())
     json = urlopen(request).read().decode()
-    print("RESPONSE:")
-    print(json, flush = True)
+    #print("RESPONSE:")
+    #print(json, flush = True)
 
 def remove_user(memID):
     print('Made it to remove_user() with memID = '+ memID)
     send_message('That was not very cash money of you.')
-    requests.post('https://api.groupme.com/v3/groups/'+ GROUP_ID +'/members'+ memID +'/remove', params = memID)
-
-
-
+    kickResponse = requests.post('https://api.groupme.com/v3/groups/'+ GROUP_ID +'/members'+ memID +'/remove', data = memID)
+    print(kickResponse)
