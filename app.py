@@ -48,8 +48,7 @@ def remove_user(memID):
     GMManager = groupy.api.base.Manager
     GMManager.session = GMClient
     GMManager.url = ('https://api.groupme.com/v3/'+'/groups/'+GROUP_ID+'/members/'+memID+'/remove')
-    MemManager = groupy.api.memberships.Memberships(GMManager)
-    MemManager.__init__(self, GMClient, GROUP_ID)
+    MemManager = groupy.api.memberships.Memberships(GMManager, GROUP_ID)
     MemManager.remove(memID)
 
 
