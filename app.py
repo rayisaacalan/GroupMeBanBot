@@ -13,7 +13,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 TOKEN = os.getenv('GM_TOKEN')
-GMClient = Client.from_token(TOKEN)
+GMClient = Client.from_token(TOKEN) #Returns a "session"
 BANNABLE_USER = os.getenv('BAN_USER_ID') #user_id
 GROUP_ID = os.getenv('GROUP_ID')
 BOT_ID = os.getenv('GROUPME_TESTBOT_ID')
@@ -44,5 +44,10 @@ def send_message(msg):
 def remove_user(memID):
     print('Made it to remove_user() with memID = '+ memID)
     send_message('That was not very cash money of you.')
+    GMManager = groupy.api.base.Manager.__init__(GMClient, '/groups/'+GROUP_ID+'/members/'+memID+'/remove')
+    MemManager = groupy.api.memberships.Memberships(GMManager)
+    MemManager.__init__(GMClient, GROUP_ID)
+    MemManager.remove(memID)
 
-    groupy.api.Memberships.remove(memID)
+
+    #groupy.api.memberships.remove(memID)
