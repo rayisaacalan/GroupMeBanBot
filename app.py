@@ -7,7 +7,7 @@ from groupy.client import Client, attachments
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from flask import Flask, request
-import requests
+#import requests
 
 app = Flask(__name__)
 
@@ -43,8 +43,4 @@ def send_message(msg):
 def remove_user(memID):
     print('Made it to remove_user() with memID = '+ memID)
     send_message('That was not very cash money of you.')
-    data = {
-        'membership_id' : memID
-    }
-    kickResponse = requests.post('https://api.groupme.com/v3/groups/'+ GROUP_ID +'/members'+ memID +'/remove?token='+TOKEN, data)
-    print(kickResponse)
+    remove(memID)
