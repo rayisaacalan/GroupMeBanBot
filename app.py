@@ -4,6 +4,7 @@ import json
 import groupy
 import random
 from groupy.client import Client, attachments
+from groupy.api.memberships import remove
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from flask import Flask, request
